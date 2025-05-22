@@ -1,5 +1,3 @@
-let humanScore = 0, computerScore = 0;
-
 function getComputerChoice() {
     let choice = Math.random() * 3;
     console.log(choice);
@@ -16,18 +14,32 @@ function getHumanChoice() {
     let word = prompt("Pick rock, paper, or scissors:")
     let value = (word.toUpperCase()).toLowerCase();
     return value;
-}
+};
 
-function playRound(comp human) {
-    human = getHumanChoice();
-    comp = getComputerChoice();
-    if (human === comp) {
-        return console.log(`computer chose ${comp}, you tied`);
-    } else if ((human == "scissors" && comp == "rock") || (human == "rock" && comp == "paper") || (human == "paper" && comp == "scissors")) {
-        ++computerScore;
-        return console.log(`computer chose ${comp}, you lost. Computer gained 1 point.`)
+function playGame() {
+    let humanScore = 0, computerScore = 0;
+    function playRound(comp, human) {
+        human = getHumanChoice();
+        comp = getComputerChoice();
+        if (human === comp) {
+            return console.log(`computer chose ${comp}, you tied`);
+        } else if ((human == "scissors" && comp == "rock") || (human == "rock" && comp == "paper") || (human == "paper" && comp == "scissors")) {
+            ++computerScore;
+            return console.log(`computer chose ${comp}, you lost. Computer gained 1 point.`);
+        } else {
+            ++humanScore;
+            return console.log(`computer chose ${comp}, you won. You've gained 1 point.`);
+        }
+    };
+    for (let i = 0; i < 5; ++i) {
+        return playRound();
+    } if (humanScore == computerScore) {
+        return console.log("You tied.");
+    } else if (humanScore > computerScore) {
+        return console.log("You won!");
     } else {
-        ++humanScore;
-        return console.log(`computer chose ${comp}, you won. You've gained 1 point.`)
+        return console.log("You lost!");
     }
 };
+
+playGame();
