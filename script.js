@@ -32,13 +32,13 @@ function playGame() {
         }
     };
     for (let i = 0; i < 5; ++i) {
-        return playRound();
+        playRound();
     } if (humanScore == computerScore) {
-        return console.log("You tied.");
+        return console.log(`Total score was you: ${humanScore}, us: ${computerScore}.You tied.`);
     } else if (humanScore > computerScore) {
-        return console.log("You won!");
+        return console.log(`Total score was you: ${humanScore}, us: ${computerScore}. You won!`);
     } else {
-        return console.log("You lost!");
+        return console.log(`Total score was you: ${humanScore}, us: ${computerScore}.You lost!`);
     }
 };
 
