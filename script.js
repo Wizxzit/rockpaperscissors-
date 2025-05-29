@@ -16,6 +16,7 @@ responseText.style.color = "white";
 
 container.append(scoreText);
 scoreText.style.color = "white";
+scoreText.style.marginTop = "0.5rem";
 scoreText.textContent = `Current score is you: ${humanScore} vs us: ${computerScore}.`
 
 // buttons
@@ -87,19 +88,25 @@ function playRound(comp, human) {
     if (human === comp) {
         responseText.textContent = `We chose ${comp}, We tied.`;
         scoreText.textContent = `Current score is you: ${humanScore} vs us: ${computerScore}.`;
-        return console.log(`We chose ${comp}, We tied.`);
+        return checkScore();
     } else if ((human == "scissors" && comp == "rock") || (human == "rock" && comp == "paper") || (human == "paper" && comp == "scissors")) {
         computerScore++;
         scoreText.textContent = `Current score is you: ${humanScore} vs us: ${computerScore}.`;
         responseText.textContent = `We chose ${comp}, you lost. We gained 1 point.`;
-        return console.log(`We chose ${comp}, you lost. Computer gained 1 point.`);
+        return checkScore();
     } else {
         humanScore++;
         scoreText.textContent = `Current score is you: ${humanScore} vs us: ${computerScore}.`;
         responseText.textContent = `We chose ${comp}, you won. You've gained 1 point.`;
-        return console.log(`We chose ${comp}, you won. You've gained 1 point.`);
+        return checkScore();
     }
 };
 
-
-
+function checkScore() {
+    if (humanScore == 5) {
+        scoreText.textContent = "Congratulations! You've won."
+    } else if (computerScore == 5) {
+        scoreText.textContent = "Sorry, we won. Yay us."
+    } else {
+    } return;
+};
