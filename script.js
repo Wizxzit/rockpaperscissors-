@@ -3,7 +3,7 @@ const activeText = document.createElement("div");
 const container = document.getElementById("container");
 
 container.append(activeText);
-activeText.style.marginTop = "1rem";
+activeText.style.margin = "2rem auto";
 activeText.style.color = "white";
 
 // buttons
@@ -14,13 +14,17 @@ const scissorsButton = document.getElementById("scissors");
 
 // rock button
 rockButton.addEventListener('mouseover', function() {
-    rockButton.style.color = "blue";
+    rockButton.style.color = "brown";
     activeText.textContent = "You're picking rock";
 });
 
 rockButton.addEventListener('mouseout', function() {
     rockButton.style.color = "black";
     activeText.textContent = "";
+});
+
+rockButton.addEventListener('click', function() {
+    playRound(getComputerChoice, "rock");
 });
 
 // paper button
@@ -34,9 +38,13 @@ paperButton.addEventListener('mouseout', function() {
     activeText.textContent = "";
 });
 
+paperButton.addEventListener('click', function() {
+    playRound(getComputerChoice, "paper");
+});
+
 // scissors button
 scissorsButton.addEventListener('mouseover', function() {
-    scissorsButton.style.color = "blue";
+    scissorsButton.style.color = "red";
     activeText.textContent = "You're picking scissors";
 });
 
@@ -45,11 +53,9 @@ scissorsButton.addEventListener('mouseout', function() {
     activeText.textContent = "";
 });
 
-
-
-rockButton.addEventListener('click', (onClick) => playRound(getComputerChoice(), "rock"));
-paperButton.addEventListener('click', (onClick) => playRound(getComputerChoice(), "paper"));
-scissorsButton.addEventListener('click', (onClick) => playRound(getComputerChoice(), "scissors"));
+scissorsButton.addEventListener('click', function() {
+    playRound(getComputerChoice, "scissors");
+});
 
 // page functions
 function getComputerChoice() {
