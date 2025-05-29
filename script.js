@@ -25,47 +25,47 @@ const scissorsButton = document.getElementById("scissors");
 
 
 // rock button
-rockButton.addEventListener('mouseover', function() {
+rockButton.addEventListener('mouseover', function () {
     rockButton.style.color = "brown";
     activeText.textContent = "You're picking rock";
 });
 
-rockButton.addEventListener('mouseout', function() {
+rockButton.addEventListener('mouseout', function () {
     rockButton.style.color = "black";
     activeText.textContent = "";
 });
 
-rockButton.addEventListener('click', function() {
+rockButton.addEventListener('click', function () {
     playRound(getComputerChoice(), "rock");
 });
 
 // paper button
-paperButton.addEventListener('mouseover', function() {
+paperButton.addEventListener('mouseover', function () {
     paperButton.style.color = "blue";
     activeText.textContent = "You're picking paper";
 });
 
-paperButton.addEventListener('mouseout', function() {
+paperButton.addEventListener('mouseout', function () {
     paperButton.style.color = "black";
     activeText.textContent = "";
 });
 
-paperButton.addEventListener('click', function() {
+paperButton.addEventListener('click', function () {
     playRound(getComputerChoice(), "paper");
 });
 
 // scissors button
-scissorsButton.addEventListener('mouseover', function() {
+scissorsButton.addEventListener('mouseover', function () {
     scissorsButton.style.color = "red";
     activeText.textContent = "You're picking scissors";
 });
 
-scissorsButton.addEventListener('mouseout', function() {
+scissorsButton.addEventListener('mouseout', function () {
     scissorsButton.style.color = "black";
     activeText.textContent = "";
 });
 
-scissorsButton.addEventListener('click', function() {
+scissorsButton.addEventListener('click', function () {
     playRound(getComputerChoice(), "scissors");
 });
 
@@ -84,19 +84,20 @@ function getComputerChoice() {
 
 
 function playRound(comp, human) {
-    human = getHumanChoice();
-    comp = getComputerChoice();
     if (human === comp) {
-        responseText.textContent = `computer chose ${comp}, you tied`;
-        return console.log(`computer chose ${comp}, you tied`);
+        responseText.textContent = `We chose ${comp}, We tied.`;
+        scoreText.textContent = `Current score is you: ${humanScore} vs us: ${computerScore}.`;
+        return console.log(`We chose ${comp}, We tied.`);
     } else if ((human == "scissors" && comp == "rock") || (human == "rock" && comp == "paper") || (human == "paper" && comp == "scissors")) {
-        ++computerScore;
-        responseText.textContent = `computer chose ${comp}, you lost. Computer gained 1 point.`;
-        return console.log(`computer chose ${comp}, you lost. Computer gained 1 point.`);
+        computerScore++;
+        scoreText.textContent = `Current score is you: ${humanScore} vs us: ${computerScore}.`;
+        responseText.textContent = `We chose ${comp}, you lost. We gained 1 point.`;
+        return console.log(`We chose ${comp}, you lost. Computer gained 1 point.`);
     } else {
-        ++humanScore;
-        responseText.textContent = `computer chose ${comp}, you won. You've gained 1 point.`;
-        return console.log(`computer chose ${comp}, you won. You've gained 1 point.`);
+        humanScore++;
+        scoreText.textContent = `Current score is you: ${humanScore} vs us: ${computerScore}.`;
+        responseText.textContent = `We chose ${comp}, you won. You've gained 1 point.`;
+        return console.log(`We chose ${comp}, you won. You've gained 1 point.`);
     }
 };
 
