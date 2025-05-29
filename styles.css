@@ -4,14 +4,23 @@
     padding: 0; 
 }
 
-.container {
-    display: flex;
+#title {
+    font-size: 3rem;
+    color: white;
+    min-width: 100vh;
+    margin: 0;
+    background-color: black;
     padding: 1rem;
-    margin: 1rem;
+    font-family: "Roboto", sans-serif;
 }
 
-.info {
-    margin: 2rem;
+#container {
+    display: flex;
+    min-width: 100vh;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
 }
 
 button {

@@ -1,3 +1,12 @@
+// DOM elements
+const displayText = document.createElement("p");
+const container = document.getElementById("container");
+const buttonContainer = document.getElementById("buttonContainer");
+
+displayText.textContent = "Click to choose between rock, paper, or scissors";
+container.insertBefore(displayText, buttonContainer);
+
+// page functions
 function getComputerChoice() {
     let choice = Math.random() * 3;
     console.log(choice);
@@ -10,16 +19,13 @@ function getComputerChoice() {
     }
 };
 
-function getHumanChoice() {
-    let word = prompt("Pick rock, paper, or scissors:")
-    let value = (word.toUpperCase()).toLowerCase();
-    return value;
-};
 
-const body = document.body;
-const infoText = document.createElement("div");
-infoText.textContent ="To play a game of Rock-Paper-Scissors click on a button."
-body.insertBefore("infoText", "container");
+
+// function getHumanChoice() {
+//     let word = prompt("Pick rock, paper, or scissors:")
+//     let value = (word.toUpperCase()).toLowerCase();
+//     return value;
+// };
 
 // function playGame() {
 //     let humanScore = 0, computerScore = 0;
