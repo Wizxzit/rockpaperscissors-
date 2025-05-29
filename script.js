@@ -1,10 +1,55 @@
 // DOM elements
-const displayText = document.createElement("p");
+const activeText = document.createElement("div");
 const container = document.getElementById("container");
-const buttonContainer = document.getElementById("buttonContainer");
 
-displayText.textContent = "Click to choose between rock, paper, or scissors";
-container.insertBefore(displayText, buttonContainer);
+container.append(activeText);
+activeText.style.marginTop = "1rem";
+activeText.style.color = "white";
+
+// buttons
+const rockButton = document.getElementById("rock");
+const paperButton = document.getElementById("paper");
+const scissorsButton = document.getElementById("scissors");
+
+
+// rock button
+rockButton.addEventListener('mouseover', function() {
+    rockButton.style.color = "blue";
+    activeText.textContent = "You're picking rock";
+});
+
+rockButton.addEventListener('mouseout', function() {
+    rockButton.style.color = "black";
+    activeText.textContent = "";
+});
+
+// paper button
+paperButton.addEventListener('mouseover', function() {
+    paperButton.style.color = "blue";
+    activeText.textContent = "You're picking paper";
+});
+
+paperButton.addEventListener('mouseout', function() {
+    paperButton.style.color = "black";
+    activeText.textContent = "";
+});
+
+// scissors button
+scissorsButton.addEventListener('mouseover', function() {
+    scissorsButton.style.color = "blue";
+    activeText.textContent = "You're picking scissors";
+});
+
+scissorsButton.addEventListener('mouseout', function() {
+    scissorsButton.style.color = "black";
+    activeText.textContent = "";
+});
+
+
+
+rockButton.addEventListener('click', (onClick) => playRound(getComputerChoice(), "rock"));
+paperButton.addEventListener('click', (onClick) => playRound(getComputerChoice(), "paper"));
+scissorsButton.addEventListener('click', (onClick) => playRound(getComputerChoice(), "scissors"));
 
 // page functions
 function getComputerChoice() {
@@ -20,36 +65,19 @@ function getComputerChoice() {
 };
 
 
+function playRound(comp, human) {
+    human = getHumanChoice();
+    comp = getComputerChoice();
+    if (human === comp) {
+        return console.log(`computer chose ${comp}, you tied`);
+    } else if ((human == "scissors" && comp == "rock") || (human == "rock" && comp == "paper") || (human == "paper" && comp == "scissors")) {
+        ++computerScore;
+        return console.log(`computer chose ${comp}, you lost. Computer gained 1 point.`);
+    } else {
+        ++humanScore;
+        return console.log(`computer chose ${comp}, you won. You've gained 1 point.`);
+    }
+};
 
-// function getHumanChoice() {
-//     let word = prompt("Pick rock, paper, or scissors:")
-//     let value = (word.toUpperCase()).toLowerCase();
-//     return value;
-// };
 
-// function playGame() {
-//     let humanScore = 0, computerScore = 0;
-//     function playRound(comp, human) {
-//         human = getHumanChoice();
-//         comp = getComputerChoice();
-//         if (human === comp) {
-//             return console.log(`computer chose ${comp}, you tied`);
-//         } else if ((human == "scissors" && comp == "rock") || (human == "rock" && comp == "paper") || (human == "paper" && comp == "scissors")) {
-//             ++computerScore;
-//             return console.log(`computer chose ${comp}, you lost. Computer gained 1 point.`);
-//         } else {
-//             ++humanScore;
-//             return console.log(`computer chose ${comp}, you won. You've gained 1 point.`);
-//         }
-//     };
-//     for (let i = 0; i < 5; ++i) {
-//         playRound();
-//     } if (humanScore == computerScore) {
-//         return console.log(`Total score was you: ${humanScore}, us: ${computerScore}.You tied.`);
-//     } else if (humanScore > computerScore) {
-//         return console.log(`Total score was you: ${humanScore}, us: ${computerScore}. You won!`);
-//     } else {
-//         return console.log(`Total score was you: ${humanScore}, us: ${computerScore}.You lost!`);
-//     }
-// };
 
